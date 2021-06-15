@@ -7,10 +7,18 @@ const passport = require("passport");
 const passportConfig = require("./services/auth");
 const MongoStore = require("connect-mongo");
 const schema = require("./schema/schema");
+const cors = require("cors");
 
 // Create a new Express application
 const app = express();
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    // allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 
 // Replace with your mongoLab URI
 const MONGO_URI =
